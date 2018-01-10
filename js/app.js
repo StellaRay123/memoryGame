@@ -1,7 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
-
+var cardNames = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cude', 'leaf',
+                 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cude', 'leaf',
+                 'bicycle', 'bomb'];
 
 /*
  * Display the cards on the page
@@ -25,6 +27,9 @@ function shuffle(array) {
     return array;
 }
 
+function startGame() {
+
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:

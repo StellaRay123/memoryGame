@@ -1,10 +1,12 @@
 /*
  * Create a list that holds all of your cards
  */
-var cardNames = ['diamond', 'paper-plane-o', 'anchor', 'bolt', 'cude', 'leaf',
-                 'bicycle', 'bomb', 'diamond', 'paper-plane-o', 'anchor', 'bolt', 'cude', 'leaf',
-                 'bicycle', 'bomb'];
+var cardNames = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa-anchor", "fa-anchor", "fa-bolt", "fa-bolt",
+              "fa-cube", "fa-cube", "fa-leaf", "fa-leaf", "fa-bicycle", "fa-bicycle", "fa-bomb", "fa-bomb"];
+ var open = [];
+ var matched = 0
 
+let shuffleDeck = shuffle(cardNames);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -25,11 +27,33 @@ function shuffle(array) {
     }
 
     return array;
-}
+};
+// Creates the deck delt
+function makeDeck(){
+  $(".deck").empty()
+  shuffleDeck.forEach(function(card, index){
+    const cardElement = '<li class="card"><i class="fa ' + card + '"></i></li>'
+    $(".deck").append(cardElement);
+  })
+};
+// deals deck
+makeDeck();
+//click starting count
+var clicks = 0;
+//star rating is reduced by # of clicks
+function removeStars(clicks) {
+  var starRaiting = [18,30];
+  var stars = starRaiting.length;
+  $('.stars').children().each(function(i, starElem) {
+    if (starRating[i] === clicks) $(starElem).addClass("star-lost")
+  });
+};
 
-function startGame() {
+function forStar() {
+  var val = $(".stars").html();
+  return val;
+};
 
-}
 
 /*
  * set up the event listener for a card. If a card is clicked:

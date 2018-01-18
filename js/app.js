@@ -3,7 +3,7 @@
  */
 var cardNames = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa-anchor", "fa-anchor", "fa-bolt", "fa-bolt",
               "fa-cube", "fa-cube", "fa-leaf", "fa-leaf", "fa-bicycle", "fa-bicycle", "fa-bomb", "fa-bomb"];
- var open = [];
+
  var matched = 0
 
 let shuffleDeck = shuffle(cardNames);
@@ -54,6 +54,30 @@ function forStar() {
   return val;
 };
 
+function countMoves(clicks) {
+  $('.moves').text(clicks);
+};
+/*(1) checks to see if the event target was an <li> element
+* (2) checks to see if that <li> element has the class '.show' and
+* (3) checks a boolean (true/false) that created call "disallow clicks".
+* li.card.open.show , li.card.match , li.card , image= i.fa.fa-name::before
+*/
+ var open = [],
+     li = document.querySelector('li'),
+     toggle = false;
+// refrence https://javascript.info/event-delegation
+document.addEventListener('click', cardFlip);
+//when card is clicked
+function cardFlip(event) {
+    if (toggle) {
+      li.card.open.show =
+    } else {
+      li.card
+    }
+
+    toggle = !toggle;
+
+};
 
 /*
  * set up the event listener for a card. If a card is clicked:

@@ -1,12 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
-var cardNames = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa-anchor", "fa-anchor", "fa-bolt", "fa-bolt",
-              "fa-cube", "fa-cube", "fa-leaf", "fa-leaf", "fa-bicycle", "fa-bicycle", "fa-bomb", "fa-bomb"];
-
- var matched = 0
-
-let shuffleDeck = shuffle(cardNames);
+let card = document.getElementsByClassName('card');
+let cards = [...card]
+console.log(cards);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -28,18 +25,21 @@ function shuffle(array) {
 
     return array;
 };
-// Creates the deck delt
-function makeDeck(){
-  $(".deck").empty()
-  shuffleDeck.forEach(function(card, index){
-    const cardElement = '<li class="card"><i class="fa ' + card + '"></i></li>'
-    $(".deck").append(cardElement);
-  })
+
+const deck = document.querySelector('.deck');
+function startGame(){
+  var shuffledCards = shuffle(cards);
+  for (var i = 0; i < shuffledCards.length; i++){
+    [].forEach.call(shuffledCards, function(item){
+      deck.appendChild(item);
+    });
+  cards[i].classList.remove('show', 'open', 'match', 'disabled');
+  }
 };
-// deals deck
-makeDeck();
-//click starting count
-var clicks = 0;
+
+document.body.onload = startGame();
+
+
 //star rating is reduced by # of clicks
 function removeStars(clicks) {
   var starRaiting = [18,30];
@@ -62,22 +62,17 @@ function countMoves(clicks) {
 * (3) checks a boolean (true/false) that created call "disallow clicks".
 * li.card.open.show , li.card.match , li.card , image= i.fa.fa-name::before
 */
- var open = [],
-     li = document.querySelector('li'),
-     toggle = false;
-// refrence https://javascript.info/event-delegation
-document.addEventListener('click', cardFlip);
-//when card is clicked
-function cardFlip(event) {
-    if (toggle) {
-      li.card.open.show =
-    } else {
-      li.card
-    }
 
-    toggle = !toggle;
-
+var displayCard = function (){
+  this.classList.toggle('open');
+  this.classList.toggle('show');
+  this.classList.toggle('disabled');
 };
+
+for (var i = 0; i , cards.length; i++){
+  cards[i].addEventListener('click', displayCard);
+};
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
